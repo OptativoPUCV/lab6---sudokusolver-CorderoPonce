@@ -39,3 +39,14 @@ sudoku.c:65:32: note: ...this statement, but the latter is misleadingly indented
 cc1: all warnings being treated as errors
 Compilation failed
 b021f21
+Thu 04 May 2023 11:22:06 PM UTC: 
+ sudoku.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:59:26: error: comparison between pointer and integer [-Werror]
+   59 |       if(new->sudo[i][j] == NULL){
+      |                          ^~
+cc1: all warnings being treated as errors
+Compilation failed
+c6a544e
