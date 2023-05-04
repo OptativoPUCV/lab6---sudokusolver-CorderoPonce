@@ -45,18 +45,18 @@ void print_node(Node* n){
 
 int is_valid(Node* n){
 
-  for (int i = 0 ; i < 10 ; i++){
-    for (int j = 0 ; j < 10 ; j++){
+  for (int i = 0 ; i < 9 ; i++){
+    for (int j = 0 ; j < 9 ; j++){
       int num = n->sudo[i][j];
       
       for (int x = i ; x <= i ; x++){
-        for (int y = 0 ; y < 10 ; y++){
+        for (int y = 0 ; y < 9 ; y++){
           if (num == n->sudo[x][y] && y != j) return 0;
         }
       }
 
-      for (int x = 0 ; x < 10 ; x++){
-        for (int y = j ; y < 10 ; y++){
+      for (int x = 0 ; x < 9 ; x++){
+        for (int y = j ; y < 9 ; y++){
           if (num == n->sudo[x][y] && x != i) return 0;
         }
       }
