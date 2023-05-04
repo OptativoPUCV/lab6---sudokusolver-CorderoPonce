@@ -45,6 +45,25 @@ void print_node(Node* n){
 
 int is_valid(Node* n){
 
+  for (int i = 0 ; i < 10 ; i++){
+    for (int j = 0 ; j < 10 ; j++){
+      int num = n->sudo[i][j];
+      
+      for (int x = i ; x <= i ; x++){
+        for (int y = 0 ; y < 10 ; y++){
+          if (num == n->sudo[x][y] && y != j) return 0;
+        }
+      }
+
+      for (int x = 0 ; x < 10 ; x++){
+        for (int y = j ; y < 10 ; y++){
+          if (num == n->sudo[x][y] && x != i) return 0;
+        }
+      }
+    }
+    
+  }
+
     return 1;
 }
 
@@ -69,28 +88,6 @@ List* get_adj_nodes(Node* n){
   }
   return list;
 }
-
-/*
-List* get_adj_nodes(Node* n){
-  List* list=createList();
-
-  for (int i = 0 ; i < 9 ; i++){
-    for (int j = 0 ; j < 9 ; j++){
-      
-      if(!n->sudo[i][j]){
-        for (int num = 1 ; num < 10 ; num++){
-          
-          Node* new = copy(n);
-          new->sudo[i][j] = num;
-          pushBack(list, new);
-        }
-        return list;
-      }
-    }
-  }
-  return list;
-}
-*/
 
 int is_final(Node* n){
     return 0;
