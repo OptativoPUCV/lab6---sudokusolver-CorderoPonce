@@ -56,12 +56,14 @@ List* get_adj_nodes(Node* n){
 
   for (int i = 0 ; i < 9 ; i++){
     for (int j = 0 ; j < 9 ; j++){
-      
-      new->sudo[i][j] = num;
-      pushBack(list, new);
+      if(new->sudo[i][j] == NULL){
+        
+        new->sudo[i][j] = num;
+        pushBack(list, new);
 
-      num++;
-      if(num == 10) num = 1;
+        num++;
+        if(num == 10) num = 1; return list;
+      }
     }
   }
   return list;
