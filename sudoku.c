@@ -57,6 +57,13 @@ int is_valid(Node* n){
         if (num == n->sudo[x][j] && x != i) return 0;
       }
 
+      int k=3 , p; 
+      for (p = 0 ; p < 9 ; p++){
+        int i=3*(k/3) + (p/3) ;
+        int j=3*(k%3) + (p%3) ;
+    }
+      /*
+
       int posX;
       int posY;
 
@@ -88,6 +95,7 @@ int is_valid(Node* n){
           if (num == n->sudo[x][y] && (x != i || y != j)) return 0;
         }
       }
+      */
     }
     
   }
