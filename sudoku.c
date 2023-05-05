@@ -111,8 +111,18 @@ Node* DFS(Node* initial, int* cont){
   push(stack, initial);
 
   while(top(stack) != NULL){
-    Node *top = top(stack);
-    if ((is_final(top(stack)) == 0)) return top(stack);
+    void *top = top(stack);
+
+    pop(stack);
+    if ((is_final(top) == 0)) return top;
+
+    List *list = createList();
+    list = get_adj_nodes(top);
+
+    pushBack(stack, list);
+
+    free(top);
+    cont++;
   }
 
   

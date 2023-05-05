@@ -369,3 +369,16 @@ sudoku.c:114:11: note: declared here
       |           ^~~
 Compilation failed
 832e21c
+Fri 05 May 2023 07:11:11 PM UTC: 
+ sudoku.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:114:17: error: called object ‘top’ is not a function or function pointer
+  114 |     void *top = top(stack);
+      |                 ^~~
+sudoku.c:114:11: note: declared here
+  114 |     void *top = top(stack);
+      |           ^~~
+Compilation failed
+cac00f8
