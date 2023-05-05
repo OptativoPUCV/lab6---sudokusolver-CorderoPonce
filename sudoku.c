@@ -114,14 +114,14 @@ Node* DFS(Node* initial, int* cont){
     Node *topNode = top(stack);
 
     pop(stack);
-    if ((is_final(top) == 0)) return top;
+    if ((is_final(topNode) == 0)) return topNode;
 
     List *list = createList();
-    list = get_adj_nodes(top);
+    list = get_adj_nodes(topNode);
 
     pushBack(stack, list);
 
-    free(top);
+    free(topNode);
     cont++;
   }
 
