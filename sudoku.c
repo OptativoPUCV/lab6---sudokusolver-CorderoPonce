@@ -62,7 +62,7 @@ int is_valid(Node* n){
             for (int p = 0; p < 9; p++) {
                 int sub_i = 3*(k/3) + (p/3);
                 int sub_j = 3*(k%3) + (p%3);
-                if (num == n->sudo[sub_i][sub_j] && (sub_i != i || sub_j != j)) return 0;
+                if (num == n->sudo[sub_i][sub_j] && (sub_i != i && sub_j != j)) return 0;
             }
     }
   }
