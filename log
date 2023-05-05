@@ -165,3 +165,26 @@ sudoku.c:83:37: error: ‘posX’ may be used uninitialized in this function [-W
 cc1: all warnings being treated as errors
 Compilation failed
 5627ea0
+Fri 05 May 2023 01:04:15 AM UTC: 
+ sudoku.c | 44 ++++++++++++++++++--------------------------
+ 1 file changed, 18 insertions(+), 26 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:47:3: error: unknown type name ‘bool’
+   47 |   bool checked[9][9] = {false};
+      |   ^~~~
+sudoku.c:4:1: note: ‘bool’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+    3 | #include "list.h"
+  +++ |+#include <stdbool.h>
+    4 | 
+sudoku.c:47:25: error: ‘false’ undeclared (first use in this function)
+   47 |   bool checked[9][9] = {false};
+      |                         ^~~~~
+sudoku.c:47:25: note: ‘false’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+sudoku.c:47:25: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:52:25: error: ‘true’ undeclared (first use in this function)
+   52 |         checked[i][j] = true;
+      |                         ^~~~
+sudoku.c:52:25: note: ‘true’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+Compilation failed
+475f23a
