@@ -44,37 +44,38 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
+
   for (int i = 0 ; i < 9 ; i++){
     for (int j = 0 ; j < 9 ; j++){
       int num = n->sudo[i][j];
-
-      // Validación de fila
+      
       for (int y = 0 ; y < 9 ; y++){
-        if (y != j && num == n->sudo[i][y]) {
-          return 0;
-        }
+        if (num == n->sudo[i][y] && y != j) return 0;
       }
 
-      // Validación de columna
       for (int x = 0 ; x < 9 ; x++){
-        if (x != i && num == n->sudo[x][j]) {
-          return 0;
-        }
+        if (num == n->sudo[x][j] && x != i) return 0;
       }
 
-      // Validación de región
-      int reg_i = (i/3)*3; // Índice de la fila de la esquina superior izquierda de la región
-      int reg_j = (j/3)*3; // Índice de la columna de la esquina superior izquierda de la región
-      for (int x = reg_i ; x < reg_i+3 ; x++){
-        for (int y = reg_j ; y < reg_j+3 ; y++){
-          if ((x != i || y != j) && num == n->sudo[x][y]) {
-            return 0;
-          }
+      /*
+      int k=3 , p; 
+      for (p = 0 ; p < 9 ; p++){
+        int i=3*(k/3) + (p/3) ;
+        int j=3*(k%3) + (p%3) ;
+    }*/
+  
+      int start_row = i / 3 * 3;  // calculate the start row index of the submatrix
+      int start_col = j / 3 * 3;  // calculate the start column index of the submatrix
+
+      for (int x = start_row ; x < (start_row + 3) ; x++){
+        for (int y = start_col ; y < (start_col + 3) ; y++){
+          if (num == n->sudo[x][y] && (x != i || y != j)) return 0;
         }
       }
     }
+    
   }
-  return 1;
+    return 1;
 }
 
 List* get_adj_nodes(Node* n){
