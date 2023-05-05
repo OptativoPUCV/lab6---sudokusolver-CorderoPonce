@@ -213,3 +213,14 @@ sudoku.c:62:13: error: unused variable ‘i’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 8224472
+Fri 05 May 2023 01:38:39 AM UTC: 
+ sudoku.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:90:11: error: ‘posX’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   90 |       int margenX = posX + 3;
+      |           ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+e9d6703
