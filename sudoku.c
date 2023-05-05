@@ -58,12 +58,11 @@ int is_valid(Node* n){
         if (num == n->sudo[x][j] && x != i) return 0;
       }
   
-      int start_row = i - i%3;
-            int start_col = j - j%3;
-            for (int x = start_row; x < start_row + 3; x++){
-                for (int y = start_col; y < start_col + 3; y++){
-                    if (num == n->sudo[x][y] && (x != i || y != j)) return 0;
-                }
+      int k = (i/3)*3 + (j/3); // índice de la submatriz 3x3
+            for (int p = 0; p < 9; p++) {
+                int sub_i = 3*(k/3) + (p/3);
+                int sub_j = 3*(k%3) + (p%3);
+                if (num == n->sudo[sub_i][sub_j] && (sub_i != i || sub_j != j)) return 0;
             }
     }
   }
