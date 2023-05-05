@@ -49,17 +49,19 @@ int is_valid(Node* n){
     for (int j = 0 ; j < 9 ; j++){
       int num = n->sudo[i][j];
       
-      for (int x = i ; x <= i ; x++){
-        for (int y = 0 ; y < 9 ; y++){
-          if (num == n->sudo[x][y] && y != j) return 0;
-        }
+      for (int y = 0 ; y < 9 ; y++){
+        if (num == n->sudo[i][y] && y != j) return 0;
       }
 
       for (int x = 0 ; x < 9 ; x++){
-        for (int y = j ; y < 9 ; y++){
-          if (num == n->sudo[x][y] && x != i) return 0;
-        }
+        if (num == n->sudo[x][j] && x != i) return 0;
       }
+
+      int cuadranteI;
+      int cuadranteJ;
+
+      if (i < 3)
+      
     }
     
   }
