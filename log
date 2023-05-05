@@ -121,3 +121,14 @@ sudoku.c:60:11: error: unused variable ‘cuadranteI’ [-Werror=unused-variable
 cc1: all warnings being treated as errors
 Compilation failed
 febfae3
+Fri 05 May 2023 12:48:22 AM UTC: 
+ sudoku.c | 28 +++++++++++++++++++++++++---
+ 1 file changed, 25 insertions(+), 3 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:83:37: error: ‘posX’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   83 |       for (int x = posX ; x < (posX + 3) ; x++){
+      |                               ~~~~~~^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+ad8d013

@@ -57,15 +57,37 @@ int is_valid(Node* n){
         if (num == n->sudo[x][j] && x != i) return 0;
       }
 
-      int cuadranteI;
-      int cuadranteJ;
+      int posX;
+      int posY;
 
-      if (i < 3)
+      if (i < 3){
+        posX = 0;
+      }
+      if (i >= 3 && i < 6){
+        posX = 3;
+      }
+      if (i >= 6 && i < 9){
+        posX = 6;
+      }
       
+      if (j < 3){
+          posY = 0;
+        }
+      if (j >= 3 && j < 6){
+        posY = 3;
+      }
+      if (j >= 6 && j < 9){
+        posY = 6;
+      }
+
+      for (int x = posX ; x < (posX + 3) ; x++){
+        for (int y = posY ; y < (posY + 3) ; y++){
+          if (num == n->sudo[x][y] && x != i && y != j) return 0;
+        }
+      }
     }
     
   }
-
     return 1;
 }
 
