@@ -44,30 +44,31 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-    for (int i = 0 ; i < 9 ; i++){
-        for (int j = 0 ; j < 9 ; j++){
-            int num = n->sudo[i][j];
-            
-            // revisar fila
-            for (int y = 0 ; y < 9 ; y++){
-                if (num == n->sudo[i][y] && y != j) return 0;
-            }
-            
-            // revisar columna
-            for (int x = 0 ; x < 9 ; x++){
-                if (num == n->sudo[x][j] && x != i) return 0;
-            }
-            
-            // revisar submatriz 3x3
-            int posX = (i / 3) * 3;
-            int posY = (j / 3) * 3;
-            for (int x = posX ; x < posX + 3 ; x++){
-                for (int y = posY ; y < posY + 3 ; y++){
-                    if (num == n->sudo[x][y] && (x != i || y != j)) return 0;
-                }
-            }
+
+  for (int i = 0 ; i < 9 ; i++){
+    for (int j = 0 ; j < 9 ; j++){
+      
+      int num = n->sudo[i][j];
+      
+      for (int y = 0 ; y < 9 ; y++){
+        if (num == n->sudo[i][y] && y != j) return 0;
+      }
+
+      for (int x = 0 ; x < 9 ; x++){
+        if (num == n->sudo[x][j] && x != i) return 0;
+      }
+  
+      int posX = (i / 3) * 3;
+      int posY = (j / 3) * 3;
+      
+      for (int x = posX ; x < posX + 3 ; x++){
+        for (int y = posY ; y < posY + 3 ; y++){
+          if (num == n->sudo[x][y] && (x != i || y != j)) return 0;
         }
+      }
     }
+    
+  }
     return 1;
 }
 
