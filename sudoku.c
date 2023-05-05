@@ -111,7 +111,7 @@ Node* DFS(Node* initial, int* cont){
   push(stack, initial);
 
   while(top(stack) != NULL){
-    Node *top = top(stack);
+    Node *topNode = top(stack);
 
     pop(stack);
     if ((is_final(top) == 0)) return top;

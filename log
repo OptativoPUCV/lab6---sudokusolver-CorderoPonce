@@ -395,3 +395,40 @@ sudoku.c:114:11: note: declared here
       |           ^~~
 Compilation failed
 eaf1949
+Fri 05 May 2023 07:15:09 PM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:117:19: error: passing argument 1 of ‘is_final’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  117 |     if ((is_final(top) == 0)) return top;
+      |                   ^~~
+      |                   |
+      |                   void * (*)(Stack *) {aka void * (*)(List *)}
+sudoku.c:98:20: note: expected ‘Node *’ but argument is of type ‘void * (*)(Stack *)’ {aka ‘void * (*)(List *)’}
+   98 | int is_final(Node* n){
+      |              ~~~~~~^
+sudoku.c:117:38: error: returning ‘void * (*)(Stack *)’ {aka ‘void * (*)(List *)’} from a function with incompatible return type ‘Node *’ [-Werror=incompatible-pointer-types]
+  117 |     if ((is_final(top) == 0)) return top;
+      |                                      ^~~
+sudoku.c:120:26: error: passing argument 1 of ‘get_adj_nodes’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  120 |     list = get_adj_nodes(top);
+      |                          ^~~
+      |                          |
+      |                          void * (*)(Stack *) {aka void * (*)(List *)}
+sudoku.c:76:27: note: expected ‘Node *’ but argument is of type ‘void * (*)(Stack *)’ {aka ‘void * (*)(List *)’}
+   76 | List* get_adj_nodes(Node* n){
+      |                     ~~~~~~^
+sudoku.c:114:11: error: unused variable ‘topNode’ [-Werror=unused-variable]
+  114 |     Node *topNode = top(stack);
+      |           ^~~~~~~
+sudoku.c:124:5: error: ‘free’ called on unallocated object ‘top’ [-Werror=free-nonheap-object]
+  124 |     free(top);
+      |     ^~~~~~~~~
+In file included from test.c:4:
+list.h:32:7: note: declared here
+   32 | void* top(Stack* s);
+      |       ^~~
+cc1: all warnings being treated as errors
+Compilation failed
+912b654
