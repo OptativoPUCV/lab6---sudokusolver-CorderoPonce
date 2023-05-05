@@ -44,43 +44,54 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-  bool checked[9][9] = {false};
 
   for (int i = 0 ; i < 9 ; i++){
     for (int j = 0 ; j < 9 ; j++){
-      if (!checked[i][j]){
-        checked[i][j] = true;
-        int num = n->sudo[i][j];
+      int num = n->sudo[i][j];
+      
+      for (int y = 0 ; y < 9 ; y++){
+        if (num == n->sudo[i][y] && y != j) return 0;
+      }
 
-        // Comprobar fila
-        for (int y = 0 ; y < 9 ; y++){
-          if (y != j && num == n->sudo[i][y]) {
-            return 0;
-          }
+      for (int x = 0 ; x < 9 ; x++){
+        if (num == n->sudo[x][j] && x != i) return 0;
+      }
+
+      int posX;
+      int posY;
+
+      if (i < 3){
+        posX = 0;
+      }
+      if (i >= 3 && i < 6){
+        posX = 3;
+      }
+      if (i >= 6 && i < 9){
+        posX = 6;
+      }
+      
+      if (j < 3){
+          posY = 0;
         }
+      if (j >= 3 && j < 6){
+        posY = 3;
+      }
+      if (j >= 6 && j < 9){
+        posY = 6;
+      }
 
-        // Comprobar columna
-        for (int x = 0 ; x < 9 ; x++){
-          if (x != i && num == n->sudo[x][j]) {
-            return 0;
-          }
-        }
+      int margenX = posX + 3;
+      int margenY = posY + 3;
 
-        // Comprobar región 3x3
-        int region_x = (i / 3) * 3;
-        int region_y = (j / 3) * 3;
-        for (int x = region_x ; x < region_x + 3 ; x++){
-          for (int y = region_y ; y < region_y + 3 ; y++){
-            if ((x != i || y != j) && num == n->sudo[x][y]) {
-              return 0;
-            }
-            checked[x][y] = true;
-          }
+      for (int x = posX ; x < margenX ; x++){
+        for (int y = posY ; y < margenY ; y++){
+          if (num == n->sudo[x][y] && (x != i || y != j)) return 0;
         }
       }
     }
+    
   }
-  return 1;
+    return 1;
 }
 
 List* get_adj_nodes(Node* n){

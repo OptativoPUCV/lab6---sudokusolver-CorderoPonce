@@ -188,3 +188,14 @@ sudoku.c:52:25: error: ‘true’ undeclared (first use in this function)
 sudoku.c:52:25: note: ‘true’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
 Compilation failed
 475f23a
+Fri 05 May 2023 01:05:12 AM UTC: 
+ sudoku.c | 46 ++++++++++++++++++++++++++++------------------
+ 1 file changed, 28 insertions(+), 18 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:83:11: error: ‘posX’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   83 |       int margenX = posX + 3;
+      |           ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+4685c52
