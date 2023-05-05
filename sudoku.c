@@ -114,7 +114,7 @@ Node* DFS(Node* initial, int* cont){
     Node *topNode = top(stack);
 
     pop(stack);
-    if ((is_final(topNode) == 1)) return topNode;
+    if ((is_final(topNode) == 0)) return topNode;
 
     List *list = createList();
     list = get_adj_nodes(topNode);
