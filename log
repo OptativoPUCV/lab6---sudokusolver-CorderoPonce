@@ -154,3 +154,14 @@ sudoku.c:83:37: error: ‘posX’ may be used uninitialized in this function [-W
 cc1: all warnings being treated as errors
 Compilation failed
 9a43e1b
+Fri 05 May 2023 01:02:36 AM UTC: 
+ sudoku.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:83:37: error: ‘posX’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   83 |       for (int x = posX ; x < (posX + 3) ; x++){
+      |                               ~~~~~~^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+5627ea0
