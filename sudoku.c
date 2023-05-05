@@ -57,42 +57,13 @@ int is_valid(Node* n){
         if (num == n->sudo[x][j] && x != i) return 0;
       }
 
-      /*
-      int k=3 , p; 
-      for (p = 0 ; p < 9 ; p++){
-        int i=3*(k/3) + (p/3) ;
-        int j=3*(k%3) + (p%3) ;
-    }*/
-  
-      int posX;
-      int posY;
-
-      if (i < 3){
-        posX = 0;
-      }
-      if (i >= 3 && i < 6){
-        posX = 3;
-      }
-      if (i >= 6 && i < 9){
-        posX = 6;
-      }
-      
-      if (j < 3){
-          posY = 0;
-        }
-      if (j >= 3 && j < 6){
-        posY = 3;
-      }
-      if (j >= 6 && j < 9){
-        posY = 6;
-      }
-
-      int margenX = posX + 3;
-      int margenY = posY + 3;
-
-      for (int x = posX ; x < margenX ; x++){
-        for (int y = posY ; y < margenY ; y++){
-          if (num == n->sudo[x][y] && (x != i || y != j)) return 0;
+      int reg_i = (i/3)*3; // Índice de la fila de la esquina superior izquierda de la región
+      int reg_j = (j/3)*3; // Índice de la columna de la esquina superior izquierda de la región
+      for (int x = reg_i ; x < reg_i+3 ; x++){
+        for (int y = reg_j ; y < reg_j+3 ; y++){
+          if ((x != i || y != j) && num == n->sudo[x][y]) {
+            return 0;
+          }
         }
       }
     }

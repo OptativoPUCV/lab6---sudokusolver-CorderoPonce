@@ -224,3 +224,9 @@ sudoku.c:90:11: error: ‘posX’ may be used uninitialized in this function [-W
 cc1: all warnings being treated as errors
 Compilation failed
 e9d6703
+Fri 05 May 2023 01:48:25 AM UTC: 
+ sudoku.c | 41 ++++++-----------------------------------
+ 1 file changed, 6 insertions(+), 35 deletions(-)
+ tests:  2|4
+total_score: 15/70
+1e77640
