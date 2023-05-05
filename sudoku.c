@@ -44,19 +44,25 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-
   for (int i = 0 ; i < 9 ; i++){
     for (int j = 0 ; j < 9 ; j++){
       int num = n->sudo[i][j];
-      
+
+      // Validación de fila
       for (int y = 0 ; y < 9 ; y++){
-        if (num == n->sudo[i][y] && y != j) return 0;
+        if (y != j && num == n->sudo[i][y]) {
+          return 0;
+        }
       }
 
+      // Validación de columna
       for (int x = 0 ; x < 9 ; x++){
-        if (num == n->sudo[x][j] && x != i) return 0;
+        if (x != i && num == n->sudo[x][j]) {
+          return 0;
+        }
       }
 
+      // Validación de región
       int reg_i = (i/3)*3; // Índice de la fila de la esquina superior izquierda de la región
       int reg_j = (j/3)*3; // Índice de la columna de la esquina superior izquierda de la región
       for (int x = reg_i ; x < reg_i+3 ; x++){
@@ -67,9 +73,8 @@ int is_valid(Node* n){
         }
       }
     }
-    
   }
-    return 1;
+  return 1;
 }
 
 List* get_adj_nodes(Node* n){
