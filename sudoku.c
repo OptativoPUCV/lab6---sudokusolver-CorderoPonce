@@ -44,29 +44,30 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
+    int rows[9][9] = {0};      // números vistos en cada fila
+    int cols[9][9] = {0};      // números vistos en cada columna
+    int boxes[9][9] = {0};     // números vistos en cada submatriz de 3x3
 
-  for (int i = 0 ; i < 9 ; i++){
-    for (int j = 0 ; j < 9 ; j++){
-      
-      int num = n->sudo[i][j];
-      
-      for (int y = 0 ; y < 9 ; y++){
-        if (num == n->sudo[i][y] && y != j) return 0;
-      }
+    for (int i = 0 ; i < 9 ; i++){
+        for (int j = 0 ; j < 9 ; j++){
+            int num = n->sudo[i][j];
+            if (num == 0) continue;   // ignorar celdas vacías
 
-      for (int x = 0 ; x < 9 ; x++){
-        if (num == n->sudo[x][j] && x != i) return 0;
-      }
-  
-      int k = (i/3)*3 + (j/3); // índice de la submatriz 3x3
-            for (int p = 0; p < 9; p++) {
-                int sub_i = 3*(k/3) + (p/3);
-                int sub_j = 3*(k%3) + (p%3);
-                if (num == n->sudo[sub_i][sub_j] && (sub_i != i && sub_j != j)) return 0;
-            }
+            // validar fila
+            if (rows[i][num-1]) return 0;
+            rows[i][num-1] = 1;
+
+            // validar columna
+            if (cols[j][num-1]) return 0;
+            cols[j][num-1] = 1;
+
+            // validar submatriz de 3x3
+            int box_index = (i/3)*3 + (j/3);
+            if (boxes[box_index][num-1]) return 0;
+            boxes[box_index][num-1] = 1;
+        }
     }
-  }
-  return 1;
+    return 1;
 }
 
 List* get_adj_nodes(Node* n){
