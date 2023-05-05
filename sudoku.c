@@ -58,18 +58,16 @@ int is_valid(Node* n){
         if (num == n->sudo[x][j] && x != i) return 0;
       }
   
-      int posX = (i / 3) * 3;
-      int posY = (j / 3) * 3;
-      
-      for (int x = posX ; x < posX + 3 ; x++){
-        for (int y = posY ; y < posY + 3 ; y++){
-          if (num == n->sudo[x][y] && (x != i && y != j)) return 0;
-        }
-      }
+      int start_row = i - i%3;
+            int start_col = j - j%3;
+            for (int x = start_row; x < start_row + 3; x++){
+                for (int y = start_col; y < start_col + 3; y++){
+                    if (num == n->sudo[x][y] && (x != i || y != j)) return 0;
+                }
+            }
     }
-    
   }
-    return 1;
+  return 1;
 }
 
 List* get_adj_nodes(Node* n){
