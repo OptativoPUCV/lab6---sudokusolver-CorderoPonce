@@ -58,7 +58,7 @@ int is_valid(Node* n){
         if (num == n->sudo[x][j] && x != i) return 0;
       }
 
-      int posI = i;
+      int posI = (i/3)*3;
       int posJ = (j/3)*3;
       
       for (int x = posI ; x < posI+3 ; x++){
