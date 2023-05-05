@@ -111,22 +111,23 @@ Node* DFS(Node* initial, int* cont){
   push(stack, initial);
 
   while(top(stack) != NULL){
-    Node *topNode = top(stack);
+    //Node *topNode = top(stack);
 
-    pop(stack);
+    Node *topNode = pop(stack);
     
-    if (is_final(topNode) == 0) return topNode;
+    if (is_final(topNode) == 1) return topNode;
 
     List *list = createList();
     list = get_adj_nodes(topNode);
 
-    pushBack(stack, list);
+    for (Node *a = first(list) ; a != NULL ; next(list)){
+      push(stack, a);
+    }
 
     free(topNode);
     cont++;
   }
 
-  
   return NULL;
 }
 
