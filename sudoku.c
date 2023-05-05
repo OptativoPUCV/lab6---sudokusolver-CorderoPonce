@@ -44,27 +44,30 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-    int rows[9][9] = {0};      // números vistos en cada fila
-    int cols[9][9] = {0};      // números vistos en cada columna
-    int boxes[9][9] = {0};     // números vistos en cada submatriz de 3x3
-
     for (int i = 0 ; i < 9 ; i++){
         for (int j = 0 ; j < 9 ; j++){
             int num = n->sudo[i][j];
-            if (num == 0) continue;   // ignorar celdas vacías
+            if (num == 0) continue;
 
             // validar fila
-            if (rows[i][num-1]) return 0;
-            rows[i][num-1] = 1;
+            for (int y = 0 ; y < 9 ; y++){
+                if (num == n->sudo[i][y] && y != j) return 0;
+            }
 
             // validar columna
-            if (cols[j][num-1]) return 0;
-            cols[j][num-1] = 1;
+            for (int x = 0 ; x < 9 ; x++){
+                if (num == n->sudo[x][j] && x != i) return 0;
+            }
 
             // validar submatriz de 3x3
-            int box_index = (i/3)*3 + (j/3);
-            if (boxes[box_index][num-1]) return 0;
-            boxes[box_index][num-1] = 1;
+            int box_i = (i/3)*3;
+            int box_j = (j/3)*3;
+            for (int x = box_i ; x < box_i+3 ; x++){
+                for (int y = box_j ; y < box_j+3 ; y++){
+                    if (x == i && y == j) continue;  // ignorar la celda actual
+                    if (num == n->sudo[x][y]) return 0;
+                }
+            }
         }
     }
     return 1;
